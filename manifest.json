@@ -1,0 +1,21 @@
+
+{
+  "name": "Marie — Little Thoughts",
+  "short_name": "Marie",
+  "description": "A little space for your thoughts, diary, and personal profile.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#080808",
+  "theme_color": "#080808",
+  "icons": [
+    {
+      "src": "./icons/marie-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
+

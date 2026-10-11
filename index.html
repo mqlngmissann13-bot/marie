@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080808">
+  <meta name="description" content="Marie — a little space for your thoughts.">
+  <title>Marie — Little Thoughts</title>
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" href="icons/marie-icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="app">
+
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">M</div>
+        <div class="brand-text">
+          <h1>Marie</h1>
+          <p>LITTLE THOUGHTS</p>
+        </div>
+      </div>
+
+      <button
+        class="icon-button"
+        id="settingsButton"
+        type="button"
+        aria-label="Go to profile"
+      >M</button>
+    </header>
+
+    <main id="mainContent">
+
+      <!-- HOME -->
+      <section class="page active" id="homePage">
+        <div class="page-heading">
+          <p class="eyebrow">YOUR LITTLE CORNER</p>
+          <h2>Home</h2>
+          <p class="muted">Whatever is on your mind, it belongs here.</p>
+        </div>
+
+        <form id="postForm" class="panel composer">
+          <div class="composer-heading">
+            <div class="mini-logo">M</div>
+            <span>Write a thought</span>
+          </div>
+
+          <label class="sr-only" for="postContent">
+            Your thought
+          </label>
+
+          <textarea
+            id="postContent"
+            maxlength="1000"
+            placeholder="What's on your mind?"
+            rows="4"
+            required
+          ></textarea>
+
+          <div class="composer-footer">
+            <span class="muted small" id="characterCount">0 / 1000</span>
+            <button class="primary-button" type="submit">
+              Publish thought
+            </button>
+          </div>
+        </form>
+
+        <div class="feed-heading">
+          <h3>Your thoughts</h3>
+          <span class="muted small" id="postTotal">0 thoughts</span>
+        </div>
+
+        <div id="feedList" class="feed-list"></div>
+      </section>
+
+      <!-- DIARY -->
+      <section class="page" id="diaryPage">
+        <div class="page-heading">
+          <p class="eyebrow">JUST BETWEEN YOU AND YOU</p>
+          <h2>My Diary</h2>
+          <p class="muted">A private space for the things you want to keep.</p>
+        </div>
+
+        <form id="diaryForm" class="panel diary-form">
+          <label for="diaryTitle">Entry title</label>
+          <input
+            id="diaryTitle"
+            type="text"
+            maxlength="100"
+            placeholder="A little moment..."
+            required
+          >
+
+          <label for="diaryContent">Your entry</label>
+          <textarea
+            id="diaryContent"
+            maxlength="10000"
+            rows="7"
+            placeholder="Write freely. This space is yours."
+            required
+          ></textarea>
+
+          <button class="primary-button full-button" type="submit">
+            Save diary entry
+          </button>
+        </form>
+
+        <div class="feed-heading">
+          <h3>Past entries</h3>
+          <span class="muted small" id="diaryTotal">0 entries</span>
+        </div>
+
+        <div id="diaryList" class="feed-list"></div>
+      </section>
+
+      <!-- PROFILE -->
+      <section class="page" id="mePage">
+        <div class="page-heading">
+          <p class="eyebrow">THE PERSON BEHIND THE THOUGHTS</p>
+          <h2>Me</h2>
+          <p class="muted">Make this little space feel like yours.</p>
+        </div>
+
+        <div class="panel profile-card">
+          <div class="profile-avatar-wrap">
+            <img
+              id="profilePhoto"
+              class="profile-photo hidden"
+              alt="Your profile photo"
+            >
+
+            <div id="profilePlaceholder" class="profile-placeholder">
+              M
+            </div>
+          </div>
+
+          <label class="secondary-button upload-button" for="photoInput">
+            Choose profile photo
+          </label>
+
+          <input
+            id="photoInput"
+            class="sr-only"
+            type="file"
+            accept="image/*"
+          >
+
+          <p class="muted small centered">
+            Your photo appears on your profile, not in posts.
+          </p>
+        </div>
+
+        <form id="profileForm" class="panel profile-form">
+          <label for="profileName">Display name</label>
+          <input
+            id="profileName"
+            type="text"
+            maxlength="60"
+            placeholder="Your name"
+            required
+          >
+
+          <label for="profileHandle">Username</label>
+          <input
+            id="profileHandle"
+            type="text"
+            maxlength="30"
+            placeholder="@yourusername"
+          >
+
+          <label for="profileBio">Bio</label>
+          <textarea
+            id="profileBio"
+            maxlength="250"
+            rows="4"
+            placeholder="A few words about you..."
+          ></textarea>
+
+          <button class="primary-button full-button" type="submit">
+            Save profile
+          </button>
+        </form>
+
+        <div class="panel about-card">
+          <div class="mini-logo">M</div>
+          <div>
+            <h3>Marie</h3>
+            <p class="muted small">Little thoughts, kept in one place.</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- BOTTOM NAVIGATION -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <button
+        class="nav-button active"
+        type="button"
+        data-page="home"
+      >
+        <span class="nav-icon">⌂</span>
+        <span>Home</span>
+      </button>
+
+      <button
+        class="nav-button"
+        type="button"
+        data-page="diary"
+      >
+        <span class="nav-icon">▤</span>
+        <span>Diary</span>
+      </button>
+
+      <button
+        class="nav-button"
+        type="button"
+        data-page="me"
+      >
+        <span class="nav-icon">Ⓜ</span>
+        <span>Me</span>
+      </button>
+    </nav>
+
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
